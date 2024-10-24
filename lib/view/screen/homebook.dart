@@ -11,14 +11,31 @@ class Homebook extends StatelessWidget {
     Get.put(HomebookController());
 
     return Scaffold(
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.home)),
+          SizedBox(width: 20,),
+          IconButton(onPressed: (){}, icon: Icon(Icons.home)),
+          SizedBox(width: 20,),
+          IconButton(onPressed: (){}, icon: Icon(Icons.home)),
+          SizedBox(width: 20,),
+          IconButton(onPressed: (){}, icon: Icon(Icons.home))
+        ],),
+        
+      ),
       drawer: Drawer(),
       appBar: AppBar(
+        backgroundColor: Colors.white,
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.person)),
         ],
       ),
       body: SafeArea(
         child: Container(
+          color: Colors.white,
           margin: EdgeInsets.symmetric(horizontal: 15),
           child: ListView(
             children: [
@@ -95,21 +112,61 @@ class Homebook extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(height: 20,),
-              Wrap(
+              SizedBox(height: 20),
+              GridView.count(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true, // Shrink the GridView to fit its content
+                crossAxisCount: 2, // Number of columns
+                crossAxisSpacing: 10.0, // Spacing between columns
+                mainAxisSpacing: 10.0, // Spacing between rows
+                childAspectRatio: 0.75, // Ratio to control card size (width/height)
                 children: [
-                  Container(
-                      height: 160,
-                      width: 160,
-                      child: Image.asset(AppImageassets.richdad)),
-                  Container(
-                      height: 160,
-                      width: 160,
-                      child: Image.asset(
-                        AppImageassets.rye,
-                      )),
+                  Card(
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 130,
+                          width: 130,
+                          child: Image.asset(AppImageassets.richdad),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "RICH DAD",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                        Text(
+                          "Robert Kiyosaki",
+                          style: TextStyle(fontWeight: FontWeight.w300),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 130,
+                          width: 130,
+                          child: Image.asset(AppImageassets.rye),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "RICH DAD",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                        Text(
+                          "Robert Kiyosaki",
+                          style: TextStyle(fontWeight: FontWeight.w300),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),
